@@ -1,4 +1,5 @@
-import React, { createContext, useState, useCallback, ReactNode, useEffect, useRef } from 'react';
+import React, { createContext, useState, useCallback, ReactNode, useEffect } from 'react';
+import translations from '../i18n'; // i18n.js 파일에서 번역 데이터 불러오기
 
 type TranslationData = Record<string, string>;
 
@@ -17,29 +18,13 @@ interface I18nProviderProps {
 }
 
 export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('ko');
+  const [language, setLanguage] = useState<Language>('ko'); // Default to Korean
   const [isLoaded, setIsLoaded] = useState(false);
-  const translationsRef = useRef<{ en: TranslationData; ko: TranslationData }>({ en: {}, ko: {} });
 
   useEffect(() => {
-    const loadTranslations = async () => {
-      try {
-        const [enResponse, koResponse] = await Promise.all([
-          fetch('/locales/en.json'),
-          fetch('/locales/ko.json')
-        ]);
-        if (!enResponse.ok || !koResponse.ok) {
-            throw new Error(`Failed to fetch translation files: ${enResponse.statusText}, ${koResponse.statusText}`);
-        }
-        translationsRef.current.en = await enResponse.json();
-        translationsRef.current.ko = await koResponse.json();
-        setIsLoaded(true);
-      } catch (error) {
-        console.error("Failed to load translations:", error);
-      }
-    };
-    loadTranslations();
-  }, []); // Empty dependency array ensures this runs only once on mount.
+    // Translations are loaded synchronously from i18n.js
+    setIsLoaded(true);
+  }, []);
 
   useEffect(() => {
     if (isLoaded) {
@@ -48,11 +33,10 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ children }) => {
   }, [language, isLoaded]);
 
   const t = useCallback((key: string): string => {
-    const langTranslations = translationsRef.current[language];
-    return langTranslations[key as keyof typeof langTranslations] || key;
+    const langTranslations = translations[language] as TranslationData;
+    return langTranslations[key] || key;
   }, [language]);
 
-  // Render nothing until translations are loaded to prevent a flash of untranslated text.
   if (!isLoaded) {
     return null; 
   }

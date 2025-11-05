@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export const IoModuleIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (

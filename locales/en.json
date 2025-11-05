@@ -25,6 +25,12 @@
   "list_for_sale": "List for Sale",
   "error_model_name_required": "Please enter a model name first.",
   "error_suggestion_failed": "Could not get suggestion. Please select a category manually.",
+  "loading_categories": "Loading categories...",
+  "no_categories_found": "No categories found.",
+  "loading_products": "Loading products...",
+  "failed_to_load_prefix": "Failed to load ",
+  "unknown_error": "An unknown error occurred.",
+  "products": "products",
   "category_cpu": "CPU & Processors",
   "category_cpu_desc": "Central processing units and main controllers.",
   "category_cpu_siemens": "Siemens",
@@ -60,9 +66,9 @@
   "category_io_analog_out": "Analog Output",
   "category_io_analog_out_desc": "Analog output modules",
   "category_comm": "Communication Modules",
-  "category_comm_desc": "Ethernet, Profibus, etc.",
+  "category_comm_desc": "Ethernet, Profibus etc.",
   "category_hmi": "HMI & Displays",
   "category_hmi_desc": "Human-machine interfaces.",
   "category_misc": "Racks & Accessories",
-  "category_misc_desc": "Chassis, cables, etc."
+  "category_misc_desc": "Chassis, cables etc."
 }

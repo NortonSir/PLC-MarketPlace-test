@@ -1,10 +1,8 @@
-import React from 'react';
-
 export interface Category {
   id: string;
   nameKey: string;
   descriptionKey: string;
-  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  icon: string; // SVG icon name or path
   children?: Category[];
 }
 
