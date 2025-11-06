@@ -39,7 +39,7 @@ const SellModal: React.FC<SellModalProps> = ({ onClose, categories }) => {
   const [quantity, setQuantity] = useState<string>('1');
   const [purchaseYear, setPurchaseYear] = useState<string>('');
   const [specifications, setSpecifications] = useState<string>('');
-  const [imageUrl, setImageUrl] = useState<string>('https://via.placeholder.com/400x300?text=PLC+Module'); // Placeholder image
+  const [imageUrl, setImageUrl] = useState<string>('https://source.unsplash.com/random/400x300/?plc,module'); // Placeholder image
 
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [isLoadingAi, setIsLoadingAi] = useState<boolean>(false);
